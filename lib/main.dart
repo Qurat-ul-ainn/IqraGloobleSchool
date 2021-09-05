@@ -1,57 +1,53 @@
 import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iqra_global_school/screen_views/forgot_password.dart';
 import 'package:iqra_global_school/screen_views/home.dart';
-import 'package:iqra_global_school/screen_views/login.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      //MaterialApp(
+      title: 'Iqra Global School',
+      home: SplashScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
-class _MyHomePageState extends State<MyHomePage> {
+
+class _SplashScreenState extends State<SplashScreen> {
+
+
+
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
-            ()=>Navigator.pushReplacement(context,
-            MaterialPageRoute(builder:
-                (context) =>
-                HomeScreen()
-            )
-        )
-    );
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomeScreen())));
   }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-         child:   ImageIcon(
-           AssetImage(
-             "assets/icons/logo.jpg",
-           ),
-         ),
+    return Scaffold(
 
-        // )
+      body: Center(
+        child: Image.asset(
+          "assets/icons/logo.jpg",
+          height: 100,
+          width: 100,
+        ),
+      ),
     );
   }
 }
